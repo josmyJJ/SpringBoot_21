@@ -29,9 +29,24 @@ public class HomeController {
     @Autowired
     CloudinaryConfig cloudc;
 
+    @RequestMapping("/login")
+    public String login(){
+        return "login";
+    }
+
+//    @RequestMapping("/admin")
+//    public String admin(){
+//        return "admin";
+//    }
+
+
     @RequestMapping("/")
     public String index(Model model){
         model.addAttribute("fruits", fruitsRepository.findAll());
+        model.addAttribute("days", daysRepository.findAll());
+        Day day = new Day();
+        day.setWeekHours("9am to 5pm");
+        day.setWeekendHours("10 am to 4pm");
 //        model.addAttribute("fruits",fruitsRepository.findAll());
         return "index";
     }

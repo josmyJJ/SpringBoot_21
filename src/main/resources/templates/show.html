@@ -6,13 +6,20 @@
 <nav th:replace="base :: main-navbar"></nav>
 
 
-<div class="container p-5 bg-light">
+<div class="container p-5 bg-light" align="center">
 
     <div class="emptySpace"></div>
 
+
+    Day: <h4 th:text="${fruit.day.dayName}"></h4><br/>
+    Fruit: <h4 th:text="${fruit.fruitName}"></h4><br/>
+    <!--Image: <span th:text="${fruit.image}"></span>-->
+    <div th:if="${fruit.image} != null">
+        <img th:src="${fruit.image}" alt="Pictue of sandwhich">
+    </div>
+    <br/>
+
     <a class="text-info" href="/">Show All Fruits</a><br/>
-    Day: <span th:text="${fruit.day.dayName}"></span><br/>
-    Fruit: <span th:text="${fruit.fruitName}"></span><br/>
 </div>
 
 </body>

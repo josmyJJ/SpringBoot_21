@@ -15,6 +15,11 @@ public class Day {
     @Column(name = "day_name")
     private String dayName;
 
+    private String weekHours;
+
+    private String weekendHours;
+
+
     @OneToMany(mappedBy = "day",
             cascade = CascadeType.ALL,
             fetch = FetchType.EAGER,
@@ -43,6 +48,22 @@ public class Day {
 
     public void setFruits(Set<Fruit> fruits) {
         this.fruits = fruits;
+    }
+
+    public String getWeekHours() {
+        return weekHours;
+    }
+
+    public void setWeekHours(String weekHours) {
+        this.weekHours = weekHours;
+    }
+
+    public String getWeekendHours() {
+        return weekendHours;
+    }
+
+    public void setWeekendHours(String weekendHours) {
+        this.weekendHours = weekendHours;
     }
 
 }

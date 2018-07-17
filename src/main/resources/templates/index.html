@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="www.thymeleaf.org" lang="en">
+<html xmlns:th="www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
 <head th:replace="base :: head-source"></head>
 
 <body>
@@ -34,11 +34,20 @@
                     </div>
                 </td>
 
-                <td>
-                    <a class="text-secondary" th:href ="@{/update/{myId}(myId=${fruit.myId})}">Update</a>-
-                    <a class="text-secondary" th:href ="@{/detail/{myId}(myId=${fruit.myId})}">Details</a>-
-                    <a class="text-secondary" th:href ="@{/delete/{myId}(myId=${fruit.myId})}">Delete</a>
-                </td>
+                <div sec:authorize="hasAuthority('USER')">
+                    <td>
+                        <a class="text-secondary" th:href ="@{/detail/{myId}(myId=${fruit.myId})}">Details</a>
+                    </td>
+                </div>
+
+                <div sec:authorize="hasAuthority('ADMIN')">
+                    <td>
+                        <a class="text-secondary" th:href ="@{/update/{myId}(myId=${fruit.myId})}">Update</a>-
+                        <a class="text-secondary" th:href ="@{/detail/{myId}(myId=${fruit.myId})}">Details</a>-
+                        <a class="text-secondary" th:href ="@{/delete/{myId}(myId=${fruit.myId})}">Delete</a>
+                    </td>
+                </div>
+
             </tr>
             </tbody>
         </table>
